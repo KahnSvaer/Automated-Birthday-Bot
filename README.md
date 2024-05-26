@@ -8,6 +8,8 @@ This project automates the process of sending birthday wishes via WhatsApp using
 - Utilizes Selenium for web automation.
 - Easy customization of message templates using `messages.txt`.
 - Includes a `taskscript.bat` file for scheduling execution with Windows Task Scheduler.
+- Utilizes `main.py` for the main Python script.
+- Includes `BDayBotDataset.csv` for storing date of birth information.
 
 ## Prerequisites
 - Python 3.x installed on your system.
@@ -17,17 +19,18 @@ This project automates the process of sending birthday wishes via WhatsApp using
 
 ## Installation
 1. Clone or download the repository to your local machine.
-2. Install the required Python packages using `pip install -r requirements.txt`.
 
 ## Usage
 1. Update the message templates in `messages.txt` with your customized birthday wishes.
-2. Run the `whatsapp_birthday_wisher.py` script using the command `python whatsapp_birthday_wisher.py`.
-3. Follow the on-screen prompts to authenticate and start the process.
-4. Optionally, schedule the script to run automatically using Windows Task Scheduler by executing `taskscript.bat`.
+2. Update `BDayBotDataset.csv` with the date of birth information of your contacts.
+3. Run the `main.py` script using the command `python main.py`.
+4. Follow the on-screen prompts to authenticate and start the process.
+5. Optionally, schedule the script to run automatically using Windows Task Scheduler by executing `taskscript.bat`.
 
 ## Configuration
 - `messages.txt`: Contains message templates for birthday wishes. Customize these messages as per your preference.
-- `taskscript.bat`: Batch script to execute the Python script. Edit this script to specify the path to your Python executable and the location of `whatsapp_birthday_wisher.py`.
+- `taskscript.bat`: Batch script to execute the Python script. Edit this script to specify the path to your Python executable and the location of `main.py`.
+- `BDayBotDataset.csv`: CSV file containing date of birth information of contacts. Format: Name,DOB (MM/DD/YYYY).
 
 ## Important Notes
 - Ensure that you have an active internet connection throughout the execution of the script.
