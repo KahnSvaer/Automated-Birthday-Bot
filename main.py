@@ -35,7 +35,24 @@ def message_friend(message_to_send, to_target):
     message_box_path = '//*[@id="main"]/footer/div[1]/div/span[2]/div/div[2]/div[1]/div/div[1]'
     message_box = wait.until(EC.presence_of_element_located((By.XPATH, message_box_path)))
     message_box.send_keys(message_to_send + Keys.ENTER + Keys.ENTER)
-    time.sleep(1)
+    time.sleep(5)
+
+    for _ in range(10):
+        try:
+            retry_icon_path = '//span[@data-icon="error"]'
+            retry_icon = WebDriverWait(driver, 4).until(EC.presence_of_element_located((By.XPATH, retry_icon_path)))
+            retry_icon.click()
+            time.sleep(1)
+
+            try_again_button_path = '//button[contains(.,"Try again")]'
+            try_again_button = wait.until(EC.presence_of_element_located((By.XPATH, try_again_button_path)))
+            try_again_button.click()
+            time.sleep(5)
+
+        except Exception as e:
+            print("No retry icon found or other issue: ", e)
+            break
+
     driver.close()
 
 
@@ -43,7 +60,7 @@ def get_message(name):
     with open("messages.txt") as file:
         message_template_list = file.readlines()
     message_template = random.choice(message_template_list)
-    return f"{message_template.strip()} -BDayBot @{name}"
+    return f"{message_template.strip()} @{name}"
 
 
 DATASET_PATH = "BDayBotDataset.csv"
