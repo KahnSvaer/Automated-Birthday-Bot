@@ -69,7 +69,12 @@ data["date"] = pd.Series([dt.datetime.strptime(record_date, "%d-%m-%Y") for reco
 
 currant_date = dt.datetime.now()
 
+flag = False
 for index, record in data.iterrows():
     if record["date"].month == currant_date.month and record["date"].day == currant_date.day:
         message = get_message(record['name'].split()[0])
         message_friend(message, "CIC mates")
+        flag = True
+
+if not flag:
+    message_friend(f"BirthdayBot: I am alive {dt.datetime.now()}", to_target="Shivansh")
